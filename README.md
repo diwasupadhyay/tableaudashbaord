@@ -1,95 +1,54 @@
 # Sales and Market Analytics Dashboard
 
-This project builds a full analytics pipeline from raw data to dashboard-ready outputs:
-- Data cleaning and transformation with Pandas
-- KPI and monthly metric generation
-- Time-series sales forecasting
-- Tableau Public dashboard publishing
+Simple end-to-end analytics project using Python + Tableau.
 
-## 1. What you need to install
+## Live Dashboard
 
-### Core software
-1. Python 3.10+
-2. VS Code
-3. Tableau Public Desktop (free)
-4. Git (optional)
+Tableau Public:
+https://public.tableau.com/app/profile/diwas.upadhyay/viz/Sales-Market-Analytics-Dashboard/SalesMarketAnalyticsDashboard
 
-### Python dependencies
-Install from this project root:
+## What This Project Does
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
+1. Downloads and cleans sales data with Pandas
+2. Creates monthly KPI tables
+3. Builds a 6-month sales forecast
+4. Uses output files in Tableau for dashboarding
 
-## 2. Which dataset to use
+## Dataset
 
-Recommended dataset: Global Super Store Orders (TSV).
-
-Reason:
-- Includes sales, profit, discount, dates, categories, and geography
-- Works perfectly for KPIs, trends, segmentation, and forecasting
-- Commonly accepted in analytics interviews
-
-## 3. How to get the dataset
-
-Use this direct public source:
-
-```text
+Global Super Store Orders (public TSV):
 https://raw.githubusercontent.com/plotly/datasets/master/global_super_store_orders.tsv
-```
 
-Download from terminal:
+Download command:
 
 ```powershell
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/plotly/datasets/master/global_super_store_orders.tsv" -OutFile "data_raw/global_super_store_orders.tsv"
 ```
 
-## 4. Run the full pipeline
-
-From project root:
+## Quick Start
 
 ```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
 python scripts/run_pipeline.py --input data_raw/global_super_store_orders.tsv --outdir data_processed --horizon 6
 ```
 
-This generates:
-- data_processed/sales_cleaned.csv
-- data_processed/monthly_metrics.csv
-- data_processed/sales_forecast.csv
-- data_processed/data_quality_log.txt
+## Output Files
 
-## 5. Build Tableau dashboard
-
-Connect Tableau to these files:
 1. data_processed/sales_cleaned.csv
 2. data_processed/monthly_metrics.csv
 3. data_processed/sales_forecast.csv
+4. data_processed/data_quality_log.txt
 
-Create these sheets:
-1. KPI cards: total sales, profit, margin, orders, customers
-2. Monthly trend: sales and profit over time
-3. Category and sub-category bars
-4. Region map
-5. Forecast chart: actual sales vs forecast with lower and upper bounds
+## Dashboard Pages
 
-Add filters:
-- Region
-- Category
-- Segment
-- Date range
+1. KPI Overview
+2. Sales and Profit Trends
+3. Category and Region Analysis
+4. Forecast View
 
-## 6. Publish to Tableau Public
+## Tech Stack
 
-1. Sign in to Tableau Public in Tableau Desktop
-2. Publish workbook
-3. Copy live link
-4. Add link to resume and LinkedIn
-
-## 7. Suggested dashboard story insights
-
-1. Top-performing regions by sales and margin
-2. Loss-making sub-categories despite high sales
-3. Seasonal peak months
-4. Forward-looking expected sales range for the next 6 months
+1. Python (Pandas, NumPy, Statsmodels)
+2. Tableau Public
